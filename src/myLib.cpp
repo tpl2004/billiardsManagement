@@ -6,8 +6,8 @@
 #include <string>
 #include <vector>
 
-bool checkID(const std::string &str) {
-    for(const char &c : str) {
+bool checkID(const std::string &id) {
+    for(const char &c : id) {
         if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) continue;
         return false;
     }

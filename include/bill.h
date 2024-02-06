@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../include/date.h"
+#include "../include/douList.h"
 #include <string>
 #include "douList.h"
 
@@ -9,8 +10,8 @@ class Bill {
         static double paymentOfHour;
 
         Bill();
-        Bill(std::string id, std::string idOfPoolTable, std::string idOfCustomer, float numberOfHour, std::string dateOfBirth);
-        
+        Bill(std::string id, std::string idOfPoolTable, std::string idOfCustomer, float numberOfHour, std::string dateOfBill);
+
         void setID(std::string id);
         std::string getID();
 
@@ -23,7 +24,7 @@ class Bill {
         void setNumberOfHour(float numberOfHour);
         float getNumberOfHour();
 
-        void setDateOfBill(std::string dateOfBirth);
+        void setDateOfBill(std::string dateOfBill);
         Date getDateOfBill();
 
         void input();
