@@ -2,6 +2,7 @@
 
 #include "../include/date.h"
 #include <string>
+#include "douList.h"
 
 class Bill {
     public:
