@@ -168,7 +168,7 @@ void loadDataIntoBillList(douList<Bill> &L) {
             }
         }
         s_line.push_back(atb);
-        douList<Bill>::insertLast(L, Bill(s_line[0], s_line[1], s_line[3], std::stof(s_line[4]), s_line[5]));
+        douList<Bill>::insertLast(L, Bill(s_line[0], s_line[1], s_line[2], std::stof(s_line[3]), s_line[4]));
     } 
     fileInput.close();
 }
