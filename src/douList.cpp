@@ -114,8 +114,8 @@ template<class T>
 void douList<T>::show(const douList<T> &L, bool reverse) {
     node<T> *tmp = (reverse? L.tail : L.head);
     while(tmp != NULL) {
-        std::cout << tmp->data << " ";
-        //tmp->data.show();
+        //std::cout << tmp->data << " ";
+        tmp->data.show();
         reverse? tmp = tmp->pre : tmp = tmp->next;
     }
 }
