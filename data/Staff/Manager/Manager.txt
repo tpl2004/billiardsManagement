@@ -1,0 +1,2 @@
+Man1;Nguyen Van E;23;nam;Ha Noi;01/01/2023;80;truong
+Man2;Nguyen Van F;21;nam;Hue;01/01/2022;800;pho

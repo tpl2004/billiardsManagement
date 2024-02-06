@@ -1,0 +1,2 @@
+Ser1;Nguyen Van A;20;nam;Hue;01/01/2019;200;0
+Ser2;Nguyen Van B;19;nu;HCM;15/01/2010;0;1

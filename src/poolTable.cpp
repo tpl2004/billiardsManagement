@@ -8,7 +8,7 @@ PoolTable::PoolTable() {
     this->width = 0;
 }
 
-PoolTable::PoolTable(std::string id, std::string manufacturer, double price, std::string dateOfManufacture, std::string type)
+PoolTable::PoolTable(std::string id, std::string manufacturer, double price, std::string dateOfManufacture, std::string color, std::string type, float length, float width)
 : Infrastructure(id, manufacturer, price, dateOfManufacture, type) {
     this->color = checkFullName(color) ? standardize(color) : "";
     this->length = length > 0 ? length : 0;

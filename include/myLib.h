@@ -9,4 +9,4 @@ bool checkID(const std::string &id);
 bool checkFullName(const std::string &fullName);
 
 /*chuan hoa*/
-std::string standardize(std::string str);
+std::string standardize(std::string fullName);

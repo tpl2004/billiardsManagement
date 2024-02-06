@@ -20,18 +20,18 @@ bool checkFullName(const std::string &fullName) {
     return true;
 }
 
-std::string standardize(std::string str) {
-    transform(str.begin(), str.end(), str.begin(), ::tolower);
-    std::stringstream ss(str);
+std::string standardize(std::string fullName) {
+    transform(fullName.begin(), fullName.end(), fullName.begin(), ::tolower);
+    std::stringstream ss(fullName);
     std::string tmp;
     std::vector<std::string> v;
-    std::string newStr = "";
+    std::string newFullName = "";
     while(ss >> tmp) {
         tmp[0] = std::toupper(tmp[0]);
         v.push_back(tmp);
     }
     for(int i = 0; i < int(v.size()) - 1; i++) {
-        newStr += v[i] + " ";
+        newFullName += v[i] + " ";
     }
-    return newStr + v[int(v.size()) - 1];
+    return newFullName + v[int(v.size()) - 1];
 }
