@@ -60,3 +60,14 @@ Date checkDate(std::string date) {
 	}
 	return res;
 }
+
+float numberOfMonths(int year, int month, int day) {
+	float dayToMonth;
+	if(month == 2) {
+		if(year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) dayToMonth = float(day) / 29;
+		else dayToMonth = float(day) / 28;
+	}
+	else if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) dayToMonth = float(day) / 31;
+	else dayToMonth = float(day) / 30;
+	return (year - 1) * 12 + month - 1 + dayToMonth;
+}
