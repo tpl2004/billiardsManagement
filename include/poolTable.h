@@ -6,7 +6,7 @@
 class PoolTable : public Infrastructure {
     public:
         PoolTable();
-        PoolTable(std::string id, std::string manufacturer, double price, std::string dateOfManufacture, std::string type, std::string color, float length, float wifth);
+        PoolTable(std::string id, std::string manufacturer, double price, std::string dateOfManufacture, std::string type, std::string color, float length, float width);
 
         void setColor(std::string color);
         std::string getColor();
