@@ -92,7 +92,7 @@ void Infrastructure::show() {
     std::cout << "\tID: " << this->id << "\n";
     std::cout << "\tNha san xuat: " << this->manufacturer << "\n";
     std::cout << "\tGia: " << this->price << "\n";
-    std::cout << "\tNgay san xuat (dd/MM/yyyy): " << this->dateOfManufacture.getDay() << "\n";
+    std::cout << "\tNgay san xuat (dd/MM/yyyy): " << this->dateOfManufacture.getDate() << "\n";
     std::cout << "\tLoai: " << this->type << "\n";
 }
 
