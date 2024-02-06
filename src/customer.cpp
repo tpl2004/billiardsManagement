@@ -66,6 +66,7 @@ float Customer::totalOfHourPlay(const douList<Bill> &L, const std::string &id) {
     node<Bill> *p = L.head;
     while(p != NULL) {
         if(p->data.getID() == id) res += p->data.getNumberOfHour();
+        p = p->next;
     }
     return res;
 }

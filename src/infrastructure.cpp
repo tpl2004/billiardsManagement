@@ -92,14 +92,14 @@ void Infrastructure::show() {
     std::cout << "\tID: " << this->id << "\n";
     std::cout << "\tNha san xuat: " << this->manufacturer << "\n";
     std::cout << "\tGia: " << this->price << "\n";
-    std::cout << "\tNgay san xuat (dd/MM/yyyy): " << this->dateOfManufacture.getDay() << "\n";
+    std::cout << "\tNgay san xuat (dd/MM/yyyy): " << this->dateOfManufacture.getDate() << "\n";
     std::cout << "\tLoai: " << this->type << "\n";
 }
 
 int Infrastructure::numberOfMonthsUsed() {
     std::time_t now = std::time(0);
     std::tm *currentTime = std::localtime(&now);
-    int numberOfMonths = currentTime->tm_year * 12 + currentTime->tm_mon - (this->dateOfManufacture.year * 12 + this->dateOfManufacture.month);
+    int numberOfMonths = (currentTime->tm_year + 1900 - 1) * 12 + currentTime->tm_mon + 1 - (this->dateOfManufacture.year * 12 + this->dateOfManufacture.month);
     delete currentTime;
     return numberOfMonths;
 }

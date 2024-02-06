@@ -3,10 +3,10 @@
 #include <string>
 
 /*kiem tra tinh hop le cua id*/
-bool checkID(std::string id);
+bool checkID(const std::string &id);
 
 /*kiem tra tinh hop le cua ho ten*/
-bool checkFullName(std::string fullName);
+bool checkFullName(const std::string &fullName);
 
 /*chuan hoa*/
 std::string standardize(std::string str);
