@@ -22,6 +22,7 @@ bool checkFullName(const std::string &fullName) {
     return true;
 }
 
+/*
 std::string standardize(std::string fullName) {
     transform(fullName.begin(), fullName.end(), fullName.begin(), ::tolower);
     std::stringstream ss(fullName);
@@ -36,6 +37,19 @@ std::string standardize(std::string fullName) {
         newFullName += v[i] + " ";
     }
     return newFullName + v[int(v.size()) - 1];
+}
+*/
+
+std::string standardize(std::string fullName) {
+	while(fullName[0] == ' ') fullName.erase(0, 1);
+	while(fullName[fullName.length() - 1] == ' ') fullName.erase(fullName[fullName.length() - 1]);
+	for(int i = 1; i < fullName.length() - 2; i++) {
+		if(fullName[i] == ' ' && fullName[i + 1] == ' ') {
+			fullName.erase(i + 1, 1);
+			i--;
+		}
+	}
+	return fullName;
 }
 
 void loadDataIntoServerList(douList<Server> &L) {
