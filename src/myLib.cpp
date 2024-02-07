@@ -1,11 +1,8 @@
 #include "../include/myLib.h"
-#include <algorithm>
-#include <cctype>
-#include <cwchar>
 #include <fstream>
-#include <sstream>
-#include <string>
 #include <vector>
+#include <algorithm>
+#include <sstream>
 
 bool checkID(const std::string &id) {
     for(const char &c : id) {

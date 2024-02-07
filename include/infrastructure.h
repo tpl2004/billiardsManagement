@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../include/date.h"
+#include "date.h"
 #include <string.h>
 
 class Infrastructure {

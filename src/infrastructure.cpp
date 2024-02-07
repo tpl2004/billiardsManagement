@@ -99,7 +99,7 @@ void Infrastructure::show() {
 int Infrastructure::numberOfMonthsUsed() {
     std::time_t now = std::time(0);
     std::tm *currentTime = std::localtime(&now);
-    int numberOfMonths = (currentTime->tm_year + 1900 - 1) * 12 + currentTime->tm_mon + 1 - (this->dateOfManufacture.year * 12 + this->dateOfManufacture.month);
+    int res = numberOfMonths(currentTime->tm_year + 1900 - 1, currentTime->tm_mon, currentTime->tm_mday) - numberOfMonths(this->dateOfManufacture.year, this->dateOfManufacture.month, this->dateOfManufacture.day);
     delete currentTime;
-    return numberOfMonths;
+    return res;
 }
