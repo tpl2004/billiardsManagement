@@ -13,6 +13,7 @@ bool checkID(const std::string &id) {
 }
 
 bool checkFullName(const std::string &fullName) {
+    if(fullName == "") return false;
     for(const char &c : fullName) {
         if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == ' ') continue;
         return false;
@@ -172,7 +173,6 @@ void loadDataIntoBillList(douList<Bill> &L) {
 }
 
 void loadDataIntoCustomerList(douList<Customer> &L) {
-    std::cout << "load cus 1\n";
     std::ifstream fileInput("data/Customer/Customer.txt");
     std::string line;
     while(std::getline(fileInput, line)) {
@@ -183,13 +183,10 @@ void loadDataIntoCustomerList(douList<Customer> &L) {
             else {
                 s_line.push_back(atb);
                 atb = "";
-                std::cout << "load cus 2\n";
             }
         }
         s_line.push_back(atb);
-        std::cout << "load cus 3\n";
         douList<Customer>::insertLast(L, Customer(s_line[0], s_line[1], std::stoi(s_line[2])));
-        std::cout << "load cus 4\n";
     }
     fileInput.close();
 }
