@@ -1,6 +1,7 @@
 #include "../include/myLib.h"
 #include <algorithm>
 #include <cctype>
+#include <cwchar>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -174,6 +175,7 @@ void loadDataIntoBillList(douList<Bill> &L) {
 }
 
 void loadDataIntoCustomerList(douList<Customer> &L) {
+    std::cout << "load cus 1\n";
     std::ifstream fileInput("data/Customer/Customer.txt");
     std::string line;
     while(std::getline(fileInput, line)) {
@@ -184,10 +186,59 @@ void loadDataIntoCustomerList(douList<Customer> &L) {
             else {
                 s_line.push_back(atb);
                 atb = "";
+                std::cout << "load cus 2\n";
             }
         }
         s_line.push_back(atb);
+        std::cout << "load cus 3\n";
         douList<Customer>::insertLast(L, Customer(s_line[0], s_line[1], std::stoi(s_line[2])));
+        std::cout << "load cus 4\n";
     }
     fileInput.close();
+}
+
+void synBill_Customer(douList<Bill> &bill, douList<Customer> &customer) {
+    //Them khach hang trong Bill vao ds khach hang neu khach hang chua co trong ds khach hang
+    for(node<Bill> *b_tmp = bill.head; b_tmp != NULL; b_tmp = b_tmp->next) {
+        bool exist = false;
+        for(node<Customer> *c_tmp = customer.head; c_tmp != NULL; c_tmp = c_tmp->next) {
+            if(b_tmp->data.getIDOfCustomer() == c_tmp->data.getID()) {
+                exist = true;
+                break;
+            }
+        }
+        if(!exist) {
+            Customer tmp;
+            tmp.setID(b_tmp->data.getIDOfCustomer());
+            douList<Customer>::insertLast(customer, tmp);
+        }
+    }
+    //Xoa cac khach hang trong ds khach hang neu khach hang khong co trong ds Bill
+    std::vector<int> del_pos;
+    int pos = 0;
+    for(node<Customer> *c_tmp = customer.head; c_tmp != NULL;c_tmp = c_tmp->next, pos++) {
+        bool exist = false;
+        for(node<Bill> *b_tmp = bill.head; b_tmp != NULL;b_tmp = b_tmp->next) {
+            if(c_tmp->data.getID() == b_tmp->data.getIDOfCustomer()) {
+                exist = true;
+                break;
+            }
+        }
+        if(!exist) {
+            del_pos.push_back(pos);
+        }
+    }
+    for(int &elm : del_pos) {
+        douList<Customer>::del(customer, elm);
+    }
+    //Cap nhat Customer.txt
+    backupCustomer(customer);
+}
+
+void backupCustomer(const douList<Customer> &customer) {
+    std::ofstream fileOut("data/Customer/Customer.txt");
+    for(node<Customer> *tmp = customer.head; tmp != NULL; tmp = tmp->next) {
+        fileOut << tmp->data.getID() << ";" << tmp->data.getFullName() << ";" << tmp->data.getAge() << "\n";
+    }
+    fileOut.close();
 }

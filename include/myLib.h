@@ -34,3 +34,8 @@ void loadDataIntoCueList(douList<Cue> &L);
 void loadDataIntoBillList(douList<Bill> &L);
 
 void loadDataIntoCustomerList(douList<Customer> &L);
+
+void synBill_Customer(douList<Bill> &bill, douList<Customer> &customer);
+
+/*Ham sao luu du lieu cua customer list vao Customer.txt*/
+void backupCustomer(const douList<Customer> &customer);
