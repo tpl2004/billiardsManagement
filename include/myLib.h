@@ -44,6 +44,9 @@ void backupCustomer(const douList<Customer> &customer);
 /*Ham sao luu du lieu cua server list vao Server.txt*/
 void backupServer(const douList<Server> &server);
 
+/*Ham sao luu du lieu cua manager list vao Manager.txt*/
+void backupManager(const douList<Manager> &manager);
+
 /*ham kiem tra mot id da ton tai trong ds phuc vu chua*/
 bool idExistInServerList(const douList<Server> &server, std::string id);
 
@@ -62,5 +65,14 @@ bool server_salary_cmp(node<Server> A, node<Server> B);
 
 bool server_startDate_cmp(node<Server> A, node<Server> B);
 
+bool manager_age_cmp(node<Manager> A, node<Manager> B);
+
+bool manager_salary_cmp(node<Manager> A, node<Manager> B);
+
+bool manager_startDate_cmp(node<Manager> A, node<Manager> B);
+
 /*Ham reset so gio lam viec ve 0 cua server list trong chuong trinh*/
 void resetHoursOfWork(const douList<Server> &server);
+
+/*Ham reset so gio lam viec ve 0 cua manager list trong chuong trinh*/
+void resetHoursOfWork(const douList<Manager> &manager);

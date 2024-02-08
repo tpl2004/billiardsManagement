@@ -261,6 +261,21 @@ void backupServer(const douList<Server> &server) {
     fileOut.close();
 }
 
+void backupManager(const douList<Manager> &manager) {
+    std::ofstream fileOut("data/Staff/Manager/Manager.txt");
+    for(node<Manager> *tmp = manager.head; tmp != NULL; tmp = tmp->next) {
+        fileOut << tmp->data.getID() << ";"
+            << tmp->data.getFullName() << ";"
+            << tmp->data.getAge() << ";"
+            << tmp->data.getSex() << ";"
+            << tmp->data.getAddress() << ";"
+            << tmp->data.getStartDate().getDate() << ";"
+            << tmp->data.getHoursOfWork() << ";"
+            << tmp->data.getPosition() << "\n";
+    }
+    fileOut.close();
+}
+
 bool idExistInServerList(const douList<Server> &server, std::string id) {
     bool exist = false;
     for(node<Server> *tmp = server.head; tmp != NULL; tmp = tmp->next) {
@@ -319,8 +334,28 @@ bool server_startDate_cmp(node<Server> A, node<Server> B) {
     return tmp2 > tmp1;
 }
 
+bool manager_age_cmp(node<Manager> A, node<Manager> B) {
+    return A.data.getAge() > B.data.getAge();
+}
+
+bool manager_salary_cmp(node<Manager> A, node<Manager> B) {
+    return A.data.getSalary() < B.data.getSalary();
+}
+
+bool manager_startDate_cmp(node<Manager> A, node<Manager> B) {
+    Date tmp1 = A.data.getStartDate();
+    Date tmp2 = B.data.getStartDate();
+    return tmp2 > tmp1;
+}
+
 void resetHoursOfWork(const douList<Server> &server) {
     for(node<Server> *tmp = server.head; tmp != NULL; tmp = tmp->next) {
+        tmp->data.setHoursOfWork(0);
+    }
+}
+
+void resetHoursOfWork(const douList<Manager> &manager) {
+    for(node<Manager> * tmp = manager.head; tmp != NULL; tmp = tmp->next) {
         tmp->data.setHoursOfWork(0);
     }
 }
