@@ -1,9 +1,7 @@
 #pragma once
-
-#include "../include/date.h"
-#include "../include/douList.h"
-#include <string>
+#include "date.h"
 #include "douList.h"
+#include <string>
 
 class Bill {
     public:

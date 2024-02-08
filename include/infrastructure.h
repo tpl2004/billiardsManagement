@@ -1,7 +1,6 @@
 #pragma once
-
 #include "date.h"
-#include <string.h>
+#include <string>
 
 class Infrastructure {
     public:

@@ -1,6 +1,5 @@
 #include "../include/customer.h"
 #include "../include/myLib.h"
-#include "../include/douList.h"
 #include <iostream>
 
 Customer::Customer() {
