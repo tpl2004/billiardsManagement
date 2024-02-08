@@ -89,7 +89,7 @@ int Staff::getHoursOfWork() {
 }
 
 void Staff::input() {
-	std::cin.ignore();
+	//std::cin.ignore();
 	std::string id;
 	std::cout << "\tNhap vao ma nhan vien: ";
 	getline(std::cin, id);
