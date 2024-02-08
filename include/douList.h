@@ -48,6 +48,8 @@ struct douList {
     # reverse=false(default): hien thi tu dau->cuoi
     # reverse=true: hien thi tu cuoi->dau*/
     static void show(const douList<T> &L, bool reverse=false);
+
+    static void sort(const douList<T> &L, bool (*pCmp)(node<T>, node<T>));
 };
 
 template<class T>
@@ -166,5 +168,16 @@ void douList<T>::show(const douList<T> &L, bool reverse) {
         //std::cout << tmp->data << " ";
         tmp->data.show();
         reverse? tmp = tmp->pre : tmp = tmp->next;
+    }
+}
+
+template<class T>
+void douList<T>::sort(const douList<T> &L, bool (*pCmp)(node<T>, node<T>)) {
+    for(node<T> *tmp1 = L.head; tmp1->next != NULL; tmp1 = tmp1->next) {
+        for(node<T> *tmp2 = tmp1->next; tmp2 != NULL; tmp2 = tmp2->next) {
+            if(pCmp(*tmp1, *tmp2)) {
+                std::swap(tmp1->data, tmp2->data);
+            }
+        }
     }
 }
