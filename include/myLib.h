@@ -8,6 +8,7 @@
 #include "customer.h"
 #include "poolTable.h"
 #include "cue.h"
+#include "date.h"
 #include <string>
 
 /*kiem tra tinh hop le cua id*/
@@ -39,3 +40,27 @@ void synBill_Customer(douList<Bill> &bill, douList<Customer> &customer);
 
 /*Ham sao luu du lieu cua customer list vao Customer.txt*/
 void backupCustomer(const douList<Customer> &customer);
+
+/*Ham sao luu du lieu cua server list vao Server.txt*/
+void backupServer(const douList<Server> &server);
+
+/*ham kiem tra mot id da ton tai trong ds phuc vu chua*/
+bool idExistInServerList(const douList<Server> &server, std::string id);
+
+/*ham kiem tra mot id da ton tai trong ds quan ly chua*/
+bool idExistInManagerList(const douList<Manager> &manager, std::string id);
+
+/*ham kiem tra mot id da ton tai trong ds thu ngan chua*/
+bool idExistInCashierList(const douList<Cashier> &cashier, std::string id);
+
+/*ham kiem tra mot id da ton tai trong ds bao ve chua*/
+bool idExistInSecurityList(const douList<Security> &security, std::string id);
+
+bool server_age_cmp(node<Server> A, node<Server> B);
+
+bool server_salary_cmp(node<Server> A, node<Server> B);
+
+bool server_startDate_cmp(node<Server> A, node<Server> B);
+
+/*Ham reset so gio lam viec ve 0 cua server list trong chuong trinh*/
+void resetHoursOfWork(const douList<Server> &server);

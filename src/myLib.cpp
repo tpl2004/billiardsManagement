@@ -5,6 +5,7 @@
 #include <sstream>
 
 bool checkID(const std::string &id) {
+    if(id == "") return false;
     for(const char &c : id) {
         if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) continue;
         return false;
@@ -235,4 +236,83 @@ void backupCustomer(const douList<Customer> &customer) {
         fileOut << tmp->data.getID() << ";" << tmp->data.getFullName() << ";" << tmp->data.getAge() << "\n";
     }
     fileOut.close();
+}
+
+void backupServer(const douList<Server> &server) {
+    std::ofstream fileOut("data/Staff/Server/Server.txt");
+    for(node<Server> *tmp = server.head; tmp != NULL; tmp = tmp->next) {
+        fileOut << tmp->data.getID() << ";"
+            << tmp->data.getFullName() << ";"
+            << tmp->data.getAge() << ";"
+            << tmp->data.getSex() << ";"
+            << tmp->data.getAddress() << ";"
+            << tmp->data.getStartDate().getDate() << ";"
+            << tmp->data.getHoursOfWork() << ";"
+            << tmp->data.getServiceArea() << "\n";
+    }
+    fileOut.close();
+}
+
+bool idExistInServerList(const douList<Server> &server, std::string id) {
+    bool exist = false;
+    for(node<Server> *tmp = server.head; tmp != NULL; tmp = tmp->next) {
+        if(id == tmp->data.getID()) {
+            exist = true;
+            break;
+        }
+    }
+    return exist;
+}
+
+bool idExistInManagerList(const douList<Manager> &manager, std::string id) {
+    bool exist = false;
+    for(node<Manager> *tmp = manager.head; tmp != NULL; tmp = tmp->next) {
+        if(id == tmp->data.getID()) {
+            exist = true;
+            break;
+        }
+    }
+    return exist;
+}
+
+bool idExistInCashierList(const douList<Cashier> &cashier, std::string id) {
+    bool exist = false;
+    for(node<Cashier> *tmp = cashier.head; tmp != NULL; tmp = tmp->next) {
+        if(id == tmp->data.getID()) {
+            exist = true;
+            break;
+        }
+    }
+    return exist;
+}
+
+bool idExistInSecurityList(const douList<Security> &security, std::string id) {
+    bool exist = false;
+    for(node<Security> *tmp = security.head; tmp != NULL; tmp = tmp->next) {
+        if(id == tmp->data.getID()) {
+            exist = true;
+            break;
+        }
+    }
+    return exist;
+}
+
+bool server_age_cmp(node<Server> A, node<Server> B) {
+    return A.data.getAge() > B.data.getAge();
+}
+
+bool server_salary_cmp(node<Server> A, node<Server> B) {
+    return A.data.getSalary() < B.data.getSalary();
+}
+
+bool server_startDate_cmp(node<Server> A, node<Server> B) {
+    Date tmp1 = A.data.getStartDate();
+    Date tmp2 = B.data.getStartDate();
+    return tmp2 > tmp1;
+}
+
+void resetHoursOfWork(const douList<Server> &server) {
+    for(node<Server> *tmp = server.head; tmp != NULL; tmp = tmp->next) {
+        tmp->data.setHoursOfWork(0);
+    }
 }
