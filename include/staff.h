@@ -1,7 +1,6 @@
 #pragma once
-
 #include <string>
-#include "../include/date.h"
+#include "date.h"
 
 class Staff {
 	public:

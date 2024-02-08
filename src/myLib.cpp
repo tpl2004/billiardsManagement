@@ -1,26 +1,36 @@
 #include "../include/myLib.h"
 #include <fstream>
 #include <vector>
-#include <algorithm>
-#include <sstream>
+#include <string>
 
 bool checkID(const std::string &id) {
-    for(const char &c : id) {
-        if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) continue;
-        return false;
+    if(id == "") return false;
+    else {
+        for(const char &c : id) {
+            if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) continue;
+            return false;
+        }
+        return true;
     }
-    return true;
 }
 
 bool checkFullName(const std::string &fullName) {
     if(fullName == "") return false;
-    for(const char &c : fullName) {
-        if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == ' ') continue;
-        return false;
+    else {
+        bool check = false;
+        for(const char &c : fullName) {
+            if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+                check = true;
+                continue;
+            }
+            else if(c == ' ') continue;
+            return false;
+        }
+        return check;
     }
-    return true;
 }
 
+/*
 std::string standardize(std::string fullName) {
     transform(fullName.begin(), fullName.end(), fullName.begin(), ::tolower);
     std::stringstream ss(fullName);
@@ -35,6 +45,24 @@ std::string standardize(std::string fullName) {
         newFullName += v[i] + " ";
     }
     return newFullName + v[int(v.size()) - 1];
+}
+*/
+
+std::string standardize(std::string fullName) {
+	while(fullName[0] == ' ') fullName.erase(0, 1);
+	while(fullName[fullName.length() - 1] == ' ') fullName.erase(fullName[fullName.length() - 1]);
+	for(int i = 1; i < fullName.length() - 2; i++) {
+		if(fullName[i] == ' ' && fullName[i + 1] == ' ') {
+			fullName.erase(i + 1, 1);
+			i--;
+		}
+	}
+	if(fullName[0] >= 'a' && fullName[0] <= 'z') fullName[0] -= 32;
+    for(int i = 1; i < fullName.length(); i++) {
+        if(fullName[i - 1] == ' ' && fullName[i] >= 'a') fullName[i] -= 32;
+        else if(fullName[i - 1] != ' ' && fullName[i] >= 'A' && fullName[i] <= 'Z') fullName[i] += 32;
+    }
+    return fullName;
 }
 
 void loadDataIntoServerList(douList<Server> &L) {

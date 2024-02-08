@@ -1,7 +1,5 @@
 #pragma once
-
-#include <string>
-#include "../include/staff.h"
+#include "staff.h"
 
 class Cashier : public Staff {
 	public:

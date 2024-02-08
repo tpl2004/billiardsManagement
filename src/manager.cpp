@@ -1,9 +1,7 @@
 #include <algorithm>
 #include <cctype>
 #include <iostream>
-#include <string>
 #include "../include/manager.h"
-#include "../include/staff.h"
 
 Manager::Manager() {
 	this->position = 1;
