@@ -1,7 +1,5 @@
 #pragma once
-
-#include "../include/bill.h"
-#include <string>
+#include "bill.h"
 
 class Customer {
     public:

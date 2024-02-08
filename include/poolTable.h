@@ -1,7 +1,5 @@
 #pragma once
-
-#include "../include/infrastructure.h"
-#include <string>
+#include "infrastructure.h"
 
 class PoolTable : public Infrastructure {
     public:

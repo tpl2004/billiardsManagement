@@ -1,10 +1,8 @@
-#include <string>
 #include <iostream>
 #include <cctype>
 #include <algorithm>
 #include "../include/staff.h"
 #include "../include/myLib.h"
-#include "../include/date.h"
 
 Staff::Staff() {
 	this->id = "";

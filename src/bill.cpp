@@ -1,7 +1,6 @@
 #include "../include/bill.h"
 #include "../include/customer.h"
 #include "../include/myLib.h"
-#include <string>
 #include <iostream>
 
 Bill::Bill() {

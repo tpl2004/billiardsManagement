@@ -1,8 +1,9 @@
 #include "../include/myLib.h"
-#include <fstream>
-#include <vector>
 #include <algorithm>
+#include <fstream>
 #include <sstream>
+#include <vector>
+#include <string>
 
 bool checkID(const std::string &id) {
     if(id == "") return false;
@@ -15,15 +16,22 @@ bool checkID(const std::string &id) {
 
 bool checkFullName(const std::string &fullName) {
     if(fullName == "") return false;
-    for(const char &c : fullName) {
-        if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == ' ') continue;
-        return false;
+    else {
+        bool check = false;
+        for(const char &c : fullName) {
+            if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+                check = true;
+                continue;
+            }
+            else if(c == ' ') continue;
+            return false;
+        }
+        return check;
     }
-    return true;
 }
 
 std::string standardize(std::string fullName) {
-    transform(fullName.begin(), fullName.end(), fullName.begin(), ::tolower);
+    std::transform(fullName.begin(), fullName.end(), fullName.begin(), ::tolower);
     std::stringstream ss(fullName);
     std::string tmp;
     std::vector<std::string> v;
